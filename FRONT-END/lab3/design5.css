@@ -1,0 +1,24 @@
+.block .header{
+    font-family: Arial;
+}
+.block h2.header{
+    font-size: 30px;
+    color:red;
+}
+.block h3.header{
+    font-size: 20px;
+    color: green;
+}
+.success {
+    color: green;
+}
+.error {
+    color: red;
+}
+.large {
+    font-size: 30px;
+}
+.small {
+    font-size: 20px;
+}
+/*53 страница #elem + li

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Угадай цвет</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Угадай цвет</h1>
+        <p>Выбери правильный HEX-код для каждого цвета</p>
+        
+        <div class="game-blocks">
+            <!-- Блок 1 - красный цвет -->
+            <div class="color-block">
+                <div class="color-square" style="background-color: #FF0000;"></div>
+                <div class="options">
+                    <a href="correct.html" class="option">#FF0000</a>
+                    <a href="wrong.html" class="option">#00FF00</a>
+                    <a href="wrong.html" class="option">#0000FF</a>
+                </div>
+            </div>
+
+            <!-- Блок 2 - зеленый цвет -->
+            <div class="color-block">
+                <div class="color-square" style="background-color: #00FF00;"></div>
+                <div class="options">
+                    <a href="wrong.html" class="option">#FF0000</a>
+                    <a href="correct.html" class="option">#00FF00</a>
+                    <a href="wrong.html" class="option">#0000FF</a>
+                </div>
+            </div>
+
+            <!-- Блок 3 - синий цвет -->
+            <div class="color-block">
+                <div class="color-square" style="background-color: #0000FF;"></div>
+                <div class="options">
+                    <a href="wrong.html" class="option">#FF0000</a>
+                    <a href="wrong.html" class="option">#00FF00</a>
+                    <a href="correct.html" class="option">#0000FF</a>
+                </div>
+            </div>
+
+            <!-- Блок 4 - желтый цвет -->
+            <div class="color-block">
+                <div class="color-square" style="background-color: #FFFF00;"></div>
+                <div class="options">
+                    <a href="wrong.html" class="option">#FF0000</a>
+                    <a href="wrong.html" class="option">#00FF00</a>
+                    <a href="correct.html" class="option">#FFFF00</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

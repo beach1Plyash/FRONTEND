@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма</title>
+    <link rel="stylesheet" href="design.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>ФОРМА</h1>
+        <form action="#">
+            <div class="form-grid">
+                <div class="form-left">
+                    <div class="form-group" id="fullname-group">
+                        <input type="text" id="fullname" name="fullname" placeholder="ФИО">
+                    </div>
+                    <div class="form-group">
+                        <label>Пол</label>
+                        <div class="radio-group">
+                            <input type="radio" id="female" name="gender" value="female" checked="">
+                            <label for="female">Жен.</label>
+                            <input type="radio" id="male" name="gender" value="male">
+                            <label for="male">Муж.</label>
+                        </div>
+                    </div>
+                    <div class="form-group" id="password-group">
+                        <input type="password" id="password" name="password" placeholder="Пароль">
+                    </div>
+                    <div class="form-group">
+                        <select id="country" name="country">
+                            <option value="" disabled="" selected="">Страна</option>
+                            <option value="russia">Россия</option>
+                            <option value="uk">United Kingdom</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-right">
+                    <div class="form-group">
+                        <label>Выберите:</label>
+                        <div class="checkbox-group">
+                            <div>
+                                <input type="checkbox" id="ice-cream" name="food" value="ice-cream" checked>
+                                <label for="ice-cream">Мороженное</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="meat" name="food" value="meat" checked>
+                                <label for="meat">Мясо</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="salad" name="food" value="salad">
+                                <label for="salad">Салат</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Что вы любите, напишите..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Отправить</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

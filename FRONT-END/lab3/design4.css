@@ -1,0 +1,25 @@
+ul i {
+    color:red;
+}
+p i{
+    color:green;
+}
+/* Упрощение
+.eee,
+.zzz,
+.ggg {
+  text-align: center;
+  font-family: Arial;
+}
+
+.eee {
+  font-size: 20px;
+}
+
+.zzz {
+  font-size: 30px;
+}
+
+.ggg {
+  font-size: 35px;
+}*/

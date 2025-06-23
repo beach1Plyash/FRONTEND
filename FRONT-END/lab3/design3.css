@@ -1,0 +1,25 @@
+h1{
+    font-size: 50px;
+    text-align: center;
+}
+h2{
+    font-size: 40px;
+    font-weight: normal;
+}
+p{
+    font-size: 30px;
+}
+/*
+сокращённый код
+p{
+ font: 13px/20px Times New Roman;
+}
+p{
+ color: red;
+ font: bold 13px Arial;
+ width: 300px;
+}
+p{
+    font: bold italic 40px/60px Arial;
+    text-indent: 50px 
+}

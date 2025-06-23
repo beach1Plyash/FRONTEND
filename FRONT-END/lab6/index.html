@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Игра Монти Холл</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Игра Монти Холл</h1>
+        <p class="description">
+            За одной из трёх дверей спрятан автомобиль, за остальными - козы. 
+            Выберите дверь, затем ведущий откроет одну из оставшихся дверей с козой.
+            Хотите ли вы сменить свой выбор?
+        </p>
+
+        <!-- Game state inputs -->
+        <input type="radio" name="door" id="door1" class="door-input">
+        <input type="radio" name="door" id="door2" class="door-input">
+        <input type="radio" name="door" id="door3" class="door-input">
+        
+        <input type="radio" name="change" id="keep" class="change-input">
+        <input type="radio" name="change" id="switch" class="change-input">
+
+        <div class="game-area">
+            <!-- Дверь 1 -->
+            <div class="door-container">
+                <label for="door1" class="door door1">
+                    <div class="door-front">
+                        
+                    </div>
+                    <div class="door-back">
+                        <div class="prize goat">🐐</div>
+                    </div>
+                </label>
+            </div>
+
+            <!-- Дверь 2 (с призом) -->
+            <div class="door-container">
+                <label for="door2" class="door door2">
+                    <div class="door-front">
+                        
+                    </div>
+                    <div class="door-back">
+                        <div class="prize car">🚗</div>
+                    </div>
+                </label>
+            </div>
+
+            <!-- Дверь 3 -->
+            <div class="door-container">
+                <label for="door3" class="door door3">
+                    <div class="door-front">
+                        
+                    </div>
+                    <div class="door-back">
+                        <div class="prize goat">🐐</div>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <div class="game-controls">
+            <div class="stage stage1">
+                <p>Выберите дверь:</p>
+            </div>
+            
+            <div class="stage stage2">
+                <p>Ведущий открывает дверь с козой. Хотите сменить выбор?</p>
+                <div class="buttons">
+                    <label for="keep" class="btn">Оставить выбор</label>
+                    <label for="switch" class="btn">Сменить выбор</label>
+                </div>
+            </div>
+
+            <div class="stage stage3">
+                <p class="result">Результат игры:</p>
+                <div class="final-result"></div>
+                <button class="restart-btn" onclick="location.reload()">Играть снова</button>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>Как играть:</h3>
+            <ol>
+                <li>Выберите одну из трёх дверей</li>
+                <li>Ведущий откроет дверь с козой</li>
+                <li>Решите, хотите ли сменить выбор</li>
+                <li>Узнайте результат!</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html> 

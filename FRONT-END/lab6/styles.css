@@ -1,0 +1,365 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f0f0;
+    color: #333;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 5px;
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+.description {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.game-area {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.door-container {
+    perspective: 1000px;
+}
+
+.door {
+    display: block;
+    width: 100px;
+    height: 100px;
+    position: relative;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.8s, box-shadow 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.door-front, .door-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.door-front {
+    background: #A0522D;
+    border: 2px solid #654321;
+}
+
+.door-back {
+    background: #e9e9e9;
+    transform: rotateY(180deg);
+    border: 2px solid #ccc;
+}
+
+.door-number {
+    display: none;
+}
+
+.prize {
+    font-size: 3em;
+    text-align: center;
+}
+
+.car {
+    color: #e74c3c;
+}
+
+.goat {
+    color: #8B4513;
+}
+
+/* Скрываем radio inputs */
+.door-input, .change-input {
+    display: none;
+}
+
+/* Логика игры через CSS */
+
+/* Этап 1: Выбор двери */
+.stage1 {
+    display: block;
+}
+
+.stage2, .stage3 {
+    display: none;
+}
+
+/* Когда выбрана любая дверь, переходим ко 2 этапу */
+#door1:checked ~ .game-controls .stage1,
+#door2:checked ~ .game-controls .stage1,
+#door3:checked ~ .game-controls .stage1 {
+    display: none;
+}
+
+#door1:checked ~ .game-controls .stage2,
+#door2:checked ~ .game-controls .stage2,
+#door3:checked ~ .game-controls .stage2 {
+    display: block;
+}
+
+/* Подсветка выбранной двери */
+#door1:checked ~ .game-area .door1,
+#door2:checked ~ .game-area .door2,
+#door3:checked ~ .game-area .door3 {
+    box-shadow: 0 0 20px 5px #3498db;
+}
+
+/* Открытие дверей ведущим */
+/* Если выбрана дверь 1, открываем дверь 3 (коза) */
+#door1:checked ~ .game-area .door3 {
+    transform: rotateY(180deg);
+}
+
+/* Если выбрана дверь 2, открываем дверь 1 (коза) */
+#door2:checked ~ .game-area .door1 {
+    transform: rotateY(180deg);
+}
+
+/* Если выбрана дверь 3, открываем дверь 1 (коза) */
+#door3:checked ~ .game-area .door1 {
+    transform: rotateY(180deg);
+}
+
+/* Этап 2: Выбор сменить или оставить */
+.buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 10px 20px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.2s;
+}
+
+.btn:hover {
+    background: #2980b9;
+}
+
+/* Этап 3: Результат */
+/* Логика для "Оставить выбор" */
+#keep:checked ~ .game-controls .stage2 {
+    display: none;
+}
+
+#keep:checked ~ .game-controls .stage3 {
+    display: block;
+}
+
+/* Логика для "Сменить выбор" */
+#switch:checked ~ .game-controls .stage2 {
+    display: none;
+}
+
+#switch:checked ~ .game-controls .stage3 {
+    display: block;
+}
+
+/* --- Логика смены подсветки при выборе "Сменить" --- */
+
+/* Выбрали 1 -> Сменить -> подсветить 2 */
+#door1:checked ~ #switch:checked ~ .game-area .door2 {
+    box-shadow: 0 0 20px 5px #e74c3c;
+}
+#door1:checked ~ #switch:checked ~ .game-area .door1 {
+    box-shadow: none;
+}
+
+/* Выбрали 3 -> Сменить -> подсветить 2 */
+#door3:checked ~ #switch:checked ~ .game-area .door2 {
+    box-shadow: 0 0 20px 5px #e74c3c;
+}
+#door3:checked ~ #switch:checked ~ .game-area .door3 {
+    box-shadow: none;
+}
+
+/* Выбрали 2 -> Сменить -> подсветить 3 (т.к. ведущий открыл 1) */
+#door2:checked ~ #switch:checked ~ .game-area .door3 {
+    box-shadow: 0 0 20px 5px #e74c3c;
+}
+#door2:checked ~ #switch:checked ~ .game-area .door2 {
+    box-shadow: none;
+}
+
+/* Открытие всех дверей в финале */
+#keep:checked ~ .game-area .door,
+#switch:checked ~ .game-area .door {
+    transform: rotateY(180deg);
+}
+
+/* Логика выигрыша/проигрыша */
+/* Если выбрана дверь 1 и оставили выбор - проигрыш */
+#door1:checked ~ #keep:checked ~ .game-controls .final-result::after {
+    content: "❌ Вы проиграли! Приз был за дверью 2";
+    color: #e74c3c;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Если выбрана дверь 1 и сменили выбор - выигрыш */
+#door1:checked ~ #switch:checked ~ .game-controls .final-result::after {
+    content: "🎉 Вы выиграли! Приз был за дверью 2";
+    color: #27ae60;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Если выбрана дверь 2 и оставили выбор - выигрыш */
+#door2:checked ~ #keep:checked ~ .game-controls .final-result::after {
+    content: "🎉 Вы выиграли! Приз был за дверью 2";
+    color: #27ae60;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Если выбрана дверь 2 и сменили выбор - проигрыш */
+#door2:checked ~ #switch:checked ~ .game-controls .final-result::after {
+    content: "❌ Вы проиграли! Открыв другую дверь вы бы выиграли.";
+    color: #e74c3c;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Если выбрана дверь 3 и оставили выбор - проигрыш */
+#door3:checked ~ #keep:checked ~ .game-controls .final-result::after {
+    content: "❌ Вы проиграли! Приз был за дверью 2";
+    color: #e74c3c;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Если выбрана дверь 3 и сменили выбор - выигрыш */
+#door3:checked ~ #switch:checked ~ .game-controls .final-result::after {
+    content: "🎉 Вы выиграли! Приз был за дверью 2";
+    color: #27ae60;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.restart-btn {
+    display: block;
+    margin: 20px auto 0;
+    padding: 12px 25px;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.2s;
+}
+
+.restart-btn:hover {
+    background: #c0392b;
+}
+
+.instructions {
+    margin-top: 30px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.instructions h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.instructions ol {
+    color: #666;
+    line-height: 1.8;
+    padding-left: 20px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .game-area {
+        gap: 10px;
+    }
+    
+    .door {
+        width: 100px;
+        height: 160px;
+    }
+    
+    .door-number {
+        font-size: 2em;
+    }
+    
+    .prize {
+        font-size: 2.5em;
+    }
+    
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2em;
+    }
+    
+    .door {
+        width: 80px;
+        height: 120px;
+    }
+    
+    .door-number {
+        font-size: 1.5em;
+    }
+    
+    .prize {
+        font-size: 2em;
+    }
+} 
