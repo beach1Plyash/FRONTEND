@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Стильный To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">
+                <i class="fas fa-check-circle"></i>
+                Мои Задачи
+            </h1>
+            <p class="subtitle">Организуйте свою жизнь с помощью стильного планировщика</p>
+        </header>
+
+        <main class="main">
+            <div class="todo-form">
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        id="todoInput" 
+                        class="todo-input" 
+                        placeholder="Добавить новую задачу..."
+                        maxlength="100"
+                    >
+                    <button id="addBtn" class="add-btn">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="todo-list" id="todoList">
+                <!-- Задачи будут добавляться динамически -->
+            </div>
+
+            <div class="empty-state" id="emptyState">
+                <i class="fas fa-clipboard-list"></i>
+                <h3>Нет задач</h3>
+                <p>Добавьте свою первую задачу, чтобы начать!</p>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 Стильный To-Do List. Создано с ❤️</p>
+        </footer>
+    </div>
+
+    <!-- Модальное окно для редактирования -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Редактировать задачу</h3>
+                <button class="modal-close" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input 
+                    type="text" 
+                    id="editInput" 
+                    class="edit-input" 
+                    placeholder="Введите новый текст задачи..."
+                    maxlength="100"
+                >
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelEdit">Отмена</button>
+                <button class="btn btn-primary" id="saveEdit">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
